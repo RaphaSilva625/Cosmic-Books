@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+    <title>ESTOQUE</title>
+    <link rel="stylesheet" href=" {% static 'css/style_stock.css' %} "/>
+</head>
+<body>
+    <div class="banner">
+        <div class="navbar">
+            <img src="/static/css/logo.png" class="logo">
+            <ul>
+                <li><a href="home">HOME</a></li>
+                <li><a href="equipe">EQUIPE</a></li>
+                <li><a href="contato">CONTATO</a></li>
+                <li><a href="index">ADMIN</a></li>
+            </ul>
+        </div>
+    <main id="site-main">
+        <div class="container3">
+            <div class="box-nav d-flex justify-between"></div>
+            <div class="container3">
+            <h1>Acervo Cosmic</h1>
+            <p>Confira nossos livros disponíveis.</p>
+            </div>
+            <!-- FORM INDEX -->
+            <form action="/" method="POST">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>TÍTULO</th>
+                            <th>AUTOR</th>
+                            <th>EDITORA</th>
+                            <th>GÊNERO</th>
+                            <th>PREÇO</th>
+                            <th>TIPO DO LIVRO</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    {% for livro in livros %}
+
+                    <tr>
+                        <td>{{livro.titulo}}</td>
+                        <td>{{livro.autor}}</td>
+                        <td>{{livro.editora}}</td>
+                        <td>{{livro.genero}}</td>
+                        <td>{{livro.preco}}</td>
+                        <td>{{livro.tipo}}</td>
+                    </tr>
+
+                    {%endfor %}
+
+                    </tbody>
+                </table>
+            </form>
+
+<!-- FORM INDEX -->
+
+        </div>
+    </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COSMIC BOOKS</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+    <link rel="stylesheet" href=" {% static 'css/style.css' %} "/>
+</head>
+<body>
+
+    <!-- Header -->
+        <header id="header">
+            <nav>
+                <div class="container">
+                    <div class="text-center">
+                        <a href="home" class="nav-brand text-dark">COSMIC BOOKS</a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+    <!-- /Header -->
+
+ <!-- Main Site -->
+  <main id="site-main">
+    <div class="container">
+        <div class="box-nav d-flex justify-between">
+           <div class="filter">
+               <a href="/crudapp/index"><i class="fas fa-angle-double-left"></i> INDEX</a>
+           </div>
+        </div>
+        <div class="form-title text-center">
+            <h2 class="text-dark">CREATE</h2>
+            <span class="text-light">Cadastre abaixo novo livro / autor:</span>
+        </div>
+
+<!-- CREATE/ADD LIVRO FORM -->
+
+ <form action="create" method="POST" id="add_livro">
+     {%csrf_token%}
+    <div class="new_livro">
+        <div class="form-group">
+            <label for="titulo" class="text-light">TÍTULO</label>
+            <input id="titulo" type="text" name="titulo" value="" placeholder="Nome do Autor" required>
+        </div>
+
+        <div class="form-group">
+            <label for="autor" class="text-light">AUTOR</label>
+            <input id="autor" type="text" name="autor" value="" placeholder="Título do Livro" required>
+        </div>
+
+        <div class="form-group">
+            <label for="editora" class="text-light">EDITORA</label>
+            <input id="editora" type="text" name="editora" value="" placeholder="Nome da Editora" required>
+        </div>
+
+        <div class="form-group">
+            <label for="genero" class="text-light">GÊNERO</label>
+            <input id="genero" type="text" name="genero" value="" placeholder="Gênero do Livro" required>
+        </div>
+
+        <div class="form-group">
+            <label for="preco" class="text-light">PREÇO</label>
+            <input id="preco" type="text" name="preco" value="" placeholder="Preço do Livro" required>
+        </div>
+
+        <div class="form-group">
+            <label class="text-light">TIPO DO LIVRO</label>
+            <div class="radio inline">
+                <input type="radio" id="Novo" name="tipo" value="Novo" checked>
+                <label for="Novo" class="radio-label">Novo</label>
+            </div>
+            <div class="radio inline">
+                <input type="radio" id="Usado" name="tipo" value="Usado" >
+                <label for="Usado" class="radio-label">Usado</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn text-dark update">Salvar</button>
+        </div>
+
+    </div>
+</form>
+
+    </div>
+</main>
+<!-- /Main Site -->
+
+</body>
+</html>

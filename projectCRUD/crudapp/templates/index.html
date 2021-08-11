@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADMIN</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+          integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+          crossorigin="anonymous" />
+    <link rel="stylesheet" href=" {% static 'css/style.css' %} "/>
+</head>
+<body>
+    <!-- Header -->
+        <header id="header">
+            <nav>
+                <div class="container">
+                    <div class="text-center">
+                        <a href="home" class="nav-brand text-dark">COSMIC BOOKS</a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+    <!-- /Header -->
+ <!-- Main Site -->
+    <main id="site-main">
+        <div class="container">
+            <div class="box-nav d-flex justify-between">
+                <a href="create_template" class="border-shadow">
+                    <span class="text-gradient">Cadastrar <i class="fas fa-book-open"></i></span>
+                </a>
+            </div>
+
+            <!-- FORM INDEX -->
+            <form action="/" method="POST">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>TÍTULO</th>
+                            <th>AUTOR</th>
+                            <th>EDITORA</th>
+                            <th>GÊNERO</th>
+                            <th>PREÇO</th>
+                            <th>TIPO</th>
+                            <th>AÇÕES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    {% for livro in livros %}
+
+                    <tr>
+                    <td>{{livro.titulo}}</td>
+                    <td>{{livro.autor}}</td>
+                    <td>{{livro.editora}}</td>
+                    <td>{{livro.genero}}</td>
+                    <td>{{livro.preco}}</td>
+                    <td>{{livro.tipo}}</td>
+                    <td>
+                        <a href="update_template/{{livro.id}}" class="btn border-shadow update">
+                            <span class="text-gradient"><i class="fas fa-pencil-alt"></i></span>
+                        </a>
+                        <a class="btn border-shadow delete" href="delete/{{livro.id}}"
+                            data-toggle="modal" data-target="#delete-modal">
+                            <span class="text-gradient"><i class="fas fa-times"></i></span>
+                        </a>
+                        </td>
+                    </tr>
+                    {%endfor %}
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </main>
+<!-- /Main Site -->
+
+</body>
+</html>
